@@ -29,7 +29,12 @@ function adicionarPalavra(palavra){
     console.log(p);
   })
 }
-function verificarPalavra(palavra, palavraSorteada){
+function verificarPalavra(palavraSorteada, letraDigitada){
+  for(let i=0;i< palavraSorteada.length;i++){
+    if(palavraSorteada[i] != letraDigitada){
+      //Parei aqui
+    }
+  }
   
 }
 btnLimparLista.addEventListener("click",function(){
@@ -47,16 +52,7 @@ function sortearPalavra(){
   return palavraSecreta[numeroSorteado];
    
 }
-shapeStart();
-shape1();
-shape2();
-shape3();
-shape4();
-shape5();
-shape6();
-shape7();
-shape8();
-shape9();
+
 
 function validarPalavra(palavra){
     if(palavra.length == 0){
