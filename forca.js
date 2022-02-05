@@ -8,13 +8,14 @@ let buttonAdicionarPalavra = document.querySelector("#nova-palavra");
 let btnPalavra = document.querySelector("#btnPalavra");
 let btnSortearPalavra = document.querySelector("#btn-sortear");
 let span = document.querySelector('span');
-let palavraSecreta = [];
+let palavraSecreta = ["BABY","GENTIL","JOAO","THIAGO","ADRIANO","WESLLEY","URSINHO"];
+let palavraEscolhida = [];
 let btnLimparLista = document.querySelector("#btn-limpar-lista");
+let seletorEspaco = document.getElementById("container");
 
-btnSortearPalavra.addEventListener("click", function(){
- 
-  
-  return sortearPalavra();
+btnSortearPalavra.addEventListener("click", function(){ 
+  escolhaPalavraSecreta();
+   sortearPalavra();
 });
 buttonAdicionarPalavra.addEventListener("click",function(){
   adicionarPalavra(novaPalavra.value);
@@ -29,31 +30,30 @@ function adicionarPalavra(palavra){
     console.log(p);
   })
 }
-function verificarPalavra(palavraSorteada, letraDigitada){
-  for(let i=0;i< palavraSorteada.length;i++){
-    if(palavraSorteada[i] != letraDigitada){
-      //Parei aqui
-    }
-  }
-  
-}
 btnLimparLista.addEventListener("click",function(){
   palavraSecreta = [];
   span.textContent = palavraSecreta.length;
 });
-btnPalavra.addEventListener("click", function(){
-  if(validarPalavra("teste")){
-      console("OK");
-  }
-});
-function sortearPalavra(){
-  let quantidade = palavraSecreta.length;
-  let numeroSorteado = Math.floor(Math.random() * quantidade);
-  return palavraSecreta[numeroSorteado];
-   
+function escolhaPalavraSecreta(){
+  palavraEscolhida = palavraSecreta[Math.floor(Math.random() * palavraSecreta.length)]; 
 }
 
-
+function sortearPalavra(){ 
+  for(let w=0;w<palavraEscolhida.length;w++){
+    let container = document.createElement("div");
+    container.setAttribute("class","list-container");
+    seletorEspaco.appendChild(container);   
+  }
+  console.log(palavraEscolhida + "Palavra ESC");
+  console.log(container + 'Container');  
+}
+function validarPalavra(){
+  let letrasSplit = palavraEscolhida.split('');
+  
+}
+let teste = "maria";
+console.log(teste.includes('a'));
+/*
 function validarPalavra(palavra){
     if(palavra.length == 0){
     
@@ -81,3 +81,5 @@ function validarPalavra(palavra){
      return true;
       }
 }
+
+*/
