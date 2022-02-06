@@ -3,7 +3,7 @@
 
 
 let novaPalavra = document.querySelector("#input-nova-palavra");
-let palavraEscrita = document.querySelector("#palavra-text");
+let letraEscolhida = document.querySelector("#palavra-text");
 let buttonAdicionarPalavra = document.querySelector("#nova-palavra");
 let btnPalavra = document.querySelector("#btnPalavra");
 let btnSortearPalavra = document.querySelector("#btn-sortear");
@@ -12,6 +12,11 @@ let palavraSecreta = ["BABY","GENTIL","JOAO","THIAGO","ADRIANO","WESLLEY","URSIN
 let palavraEscolhida = [];
 let btnLimparLista = document.querySelector("#btn-limpar-lista");
 let seletorEspaco = document.getElementById("container");
+let entradaLetra = document.getElementById('letra-text');
+let erros =0;
+let acertos = 0;
+let letrasDigitadas = [];
+let listContainer = document.getElementById('list-container');
 
 btnSortearPalavra.addEventListener("click", function(){ 
   escolhaPalavraSecreta();
@@ -37,49 +42,68 @@ btnLimparLista.addEventListener("click",function(){
 function escolhaPalavraSecreta(){
   palavraEscolhida = palavraSecreta[Math.floor(Math.random() * palavraSecreta.length)]; 
 }
-
+btnPalavra.addEventListener("click", function(){
+  validarPalavra();
+  
+});
 function sortearPalavra(){ 
+  let letrasSplit = palavraEscolhida.split('');
   for(let w=0;w<palavraEscolhida.length;w++){
-    let container = document.createElement("div");
-    container.setAttribute("class","list-container");
-    seletorEspaco.appendChild(container);   
+    let container = document.createElement("p");
+    let innetSplit = document.createTextNode(letrasSplit[w]);
+    container.setAttribute("ID","list-container");
+    seletorEspaco.appendChild(container);
+    container.appendChild(innetSplit);
+   
+
+
   }
-  console.log(palavraEscolhida + "Palavra ESC");
+  console.log(palavraEscolhida + " " + "Palavra ESC");
   console.log(container + 'Container');  
 }
 function validarPalavra(){
-  let letrasSplit = palavraEscolhida.split('');
+ 
+ let acertou = null;
+ let entradaUsuario = entradaLetra.value.toUpperCase();
+ letrasDigitadas.push(entradaUsuario);
+ if(letrasDigitadas.includes(entradaUsuario)){
+   console.log("A letra " + entradaUsuario + "Já foi digitada");
+ }
+ else{
+   console.log("Não contem a letra");
+ }
+ //let palaSplut = palavraEscolhida.split('');
+ //let palavraEscolhidaSplit = palavraEscolhida.split('');
+ console.log(palavraEscolhida + "Palavra Escolhida");
+for(let i=0;i < entradaUsuario.length;i++){
+  if(palavraEscolhida.includes(entradaUsuario)){
+    
+    console.log("acertou");
+    acertos++;
+    acertos = true;
+
+  }
+  else if(!palavraEscolhida.includes(entradaUsuario)){
+    erros++;
+    console.log(erros);
+    shapes;
+    console.log("Errou");
+    acertou = false;
+    return;
+
+  }
   
 }
-let teste = "maria";
-console.log(teste.includes('a'));
-/*
-function validarPalavra(palavra){
-    if(palavra.length == 0){
-    
-        error.className = "error";
-        setTimeout(function() {
-          error.className = "error-invisivel";
-         }, 3000);  
-
-         return false;
-      }
-      else if(palavra.match(/[^a-z ]/g)){
-        error.textContent = "Não são permitidos caracteres especiais, números ou letras maíusculas!";
-        error.className = "error";
-        setTimeout(function(){
-          error.className = "error-invisivel";
-        },3000);
-        
-        return false;
-      }
-      else{
-        textoTitulo.textContent = "Mensagem criptografada"
-        error.className = "error-invisivel";
-        var mensagemMinuscula = codificador(result);
-        msg.value = mensagemMinuscula.replace(/[^a-z ]/gi,'');
-     return true;
-      }
+ console.log(entradaLetra.value);
+  
+  
 }
 
-*/
+/**Testes */
+
+/*
+document.addEventListener('keypress',() =>{
+  var teste = entradaLetra.key.replaceAll(/[^a-zA-Z]/g,'').toUpperCase();
+  console.log(teste);
+  entradaLetra.value = teste;
+});*/

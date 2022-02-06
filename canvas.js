@@ -73,6 +73,7 @@ function shape9() {
 
 
 const shapes = [
+    shapeStart,
     shape1,
     shape2,
     shape3,
