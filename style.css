@@ -37,7 +37,7 @@ input{
   text-align: center;
 }
 #container{
-  width: 700px;
+  width: 900px;
   height: 90px;
   border: solid 3px black;
   display: flex;
@@ -52,6 +52,7 @@ input{
   height: 50px;
   display: none;
 }
-#list-container2{
+#aparecer{
   display: block;
 }
+
