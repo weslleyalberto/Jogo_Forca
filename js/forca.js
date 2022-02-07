@@ -11,7 +11,7 @@ let palavraEscolhida = [];
 let novaPalavra = document.querySelector("#input-nova-palavra");
 let letraEscolhida = document.querySelector("#palavra-text");
 let buttonAdicionarPalavra = document.querySelector("#nova-palavra");
-let btnPalavra = document.querySelector("#btnPalavra");
+let btnOk = document.querySelector("#btnPalavra");
 let btnSortearPalavra = document.querySelector("#btn-sortear");
 let span = document.querySelector('span');
 let listContainer = document.querySelector('p');
@@ -35,8 +35,14 @@ btnLimparLista.addEventListener("click",function(){
   palavraSecreta = [];
   span.textContent = palavraSecreta.length;
 });
-btnPalavra.addEventListener("click", function(){
-  if(validarEntradaTexto()){
+btnOk.addEventListener("click", function(){
+  if(palavraEscolhida.length <=0){
+    erroEmpty.textContent = 'Você deve sortear uma palavra primeiro!';
+    setTimeout(function(){
+      erroEmpty.textContent = '';
+    },3000);
+  }
+  else if(validarEntradaTexto()){
     validarPalavra(); 
     letrasDigitadas.push(entradaLetra.value);
     entradaLetra.value = '';
@@ -46,8 +52,7 @@ btnPalavra.addEventListener("click", function(){
     setTimeout(function(){
       erroEmpty.textContent = '';
     },3000);
-    return;
-    
+    return;    
   }
 });
 btnReiniciarPartida.addEventListener("click", function(){
@@ -73,8 +78,8 @@ começa o jogo. Pensar em disable com setAttribute ou semelhantes*/
 OBS: Pós a letra errada ser inserida e escrita na tela, tendo como validação, se a letra está
 presenta na palavra escolhida, desabilitar essa letra para entrada futuras.
 */
-function escolhaPalavraSecreta(){
-  palavraEscolhida = palavraSecreta[Math.floor(Math.random() * palavraSecreta.length)]; 
+function escolhaPalavraSecreta(){ // Função que sorteia a palavraSecreta e atribui ao array palavraEscolhida
+  palavraEscolhida = palavraSecreta[Math.floor(Math.random() * palavraSecreta.length)]; // atribui a apalvraEscolhida a palavra sorteada 
 }
 
 /*Comentar toda essa função , ou seja, documentar o a cada etapa da função e Retirar todos os consoles

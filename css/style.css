@@ -78,5 +78,8 @@ input{
 #error-empty{
   color: brown;
 }
+#letras-digitadas{
+  display: none;
+}
 
 
