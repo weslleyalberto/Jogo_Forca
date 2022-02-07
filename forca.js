@@ -1,14 +1,10 @@
-
-
-
-
 let novaPalavra = document.querySelector("#input-nova-palavra");
 let letraEscolhida = document.querySelector("#palavra-text");
 let buttonAdicionarPalavra = document.querySelector("#nova-palavra");
 let btnPalavra = document.querySelector("#btnPalavra");
 let btnSortearPalavra = document.querySelector("#btn-sortear");
 let span = document.querySelector('span');
-let palavraSecreta = ["BABY","GENTIL","JOAO","THIAGO","ADRIANO","WESLLEY","URSINHO"];
+let palavraSecreta = ["BABY"];
 let palavraEscolhida = [];
 let btnLimparLista = document.querySelector("#btn-limpar-lista");
 let seletorEspaco = document.getElementById("container");
@@ -17,22 +13,23 @@ let erros =0;
 let acertos = 0;
 let letrasDigitadas = [];
 let listContainer = document.querySelector('p');
-
+let vitoria = document.getElementById('vitoria');
+let derrota = document.getElementById('derrota');
+let btnReiniciarPartida = document.getElementById('btnPerdeu');
+let acertou = null;
+let containerTracinhos = document.getElementById('container-tracinhos');
 btnSortearPalavra.addEventListener("click", function(){ 
   escolhaPalavraSecreta();
    sortearPalavra();
 });
 buttonAdicionarPalavra.addEventListener("click",function(){
   adicionarPalavra(novaPalavra.value);
-  novaPalavra.value = "";
-
-   
+  novaPalavra.value = "";  
 });
 function adicionarPalavra(palavra){
   palavraSecreta.push(palavra.toUpperCase());
   palavraSecreta.forEach(function(p){
     span.textContent = palavraSecreta.length;
-    console.log(p);
   })
 }
 btnLimparLista.addEventListener("click",function(){
@@ -43,73 +40,56 @@ function escolhaPalavraSecreta(){
   palavraEscolhida = palavraSecreta[Math.floor(Math.random() * palavraSecreta.length)]; 
 }
 btnPalavra.addEventListener("click", function(){
-  validarPalavra();
-  
+  validarPalavra(); 
 });
 function sortearPalavra(){ 
- 
-  let letrasSplit = palavraEscolhida.split('');
-  
+  let letrasSplit = palavraEscolhida.split(''); 
   for(let w=0;w<palavraEscolhida.length;w++){
+    let tracinhos = document.createElement("span");
+    tracinhos.setAttribute("ID","mostrar-tracinhos");
     let container = document.createElement("p");
     let innetSplit = document.createTextNode(letrasSplit[w]);
     container.setAttribute("ID","list-container");
     seletorEspaco.appendChild(container);
-    container.appendChild(innetSplit);
-   
-
-
+    container.appendChild(innetSplit); 
+    containerTracinhos.appendChild(tracinhos);
   }
-  console.log(palavraEscolhida + " " + "Palavra ESC");
-  console.log(container + 'Container');  
+  console.log(palavraEscolhida + " " + "Palavra ESC"); 
 }
 function validarPalavra(){
-  let elementoP = document.querySelector(".container-space"); // Coloquei como variavel local , pois no escopo global ela não existe até ser chamada pelo sortearPalavra();
- 
- let acertou = null;
+ let elementoP = document.querySelector(".container-space"); 
  let entradaUsuario = entradaLetra.value.toUpperCase();
- console.log(palavraEscolhida.length);
  letrasDigitadas.push(entradaUsuario);
- if(letrasDigitadas.includes(entradaUsuario)){
-  
-   console.log("A letra " + entradaUsuario + "Já foi digitada");
- }
- else{
-   console.log("Não contem a letra");
- }
- console.log(palavraEscolhida + "Palavra Escolhida");
- 
 for(let i=0;i < palavraEscolhida.length;i++){
-  if(palavraEscolhida[i] ===entradaUsuario){
-    
-    console.log("acertou");
+   if(palavraEscolhida[i] ===entradaUsuario){    
     acertos++;
-    acertos = true;
+    console.log(acertos);
+    console.log(palavraEscolhida.length);
+    acertou = true;
     elementoP.children[i].style.display = 'block';
-    
-
-  
-    
-
+    validarVitoria();   
   }
   else if(!palavraEscolhida.includes(entradaUsuario)){
     erros++;
-    console.log(erros);
-    shapes;
-    console.log("Errou");
-    acertou = false;
+    shapes();
+    acertou = false;  
     return;
-
+  }      
+}
+}
+function validarVitoria(){
+  if(acertos === palavraEscolhida.length){
+    vitoria.style.display = "block"; 
+  } 
+}
+function jogarNovamente(){
+  if(erros >= 10){
+    derrota.style.display = "block";    
   }
-  
 }
-
- console.log(entradaLetra.value);
-  
-  
-}
-console.log(listContainer);
-/**Testes */
+btnReiniciarPartida.addEventListener("click", function(){
+  document.location.reload(true);
+});
 
 /*
 document.addEventListener('keypress',() =>{
