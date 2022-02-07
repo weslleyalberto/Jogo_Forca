@@ -22,6 +22,7 @@ let vitoria = document.getElementById('vitoria');
 let derrota = document.getElementById('derrota');
 let btnReiniciarPartida = document.getElementById('btnPerdeu');
 let containerTracinhos = document.getElementById('container-tracinhos');
+let erroEmpty = document.getElementById('error-empty');
 /*Organizar todos os addeventList , depois funções externas , nessa ordem */
 btnSortearPalavra.addEventListener("click", function(){ 
   escolhaPalavraSecreta();
@@ -35,9 +36,21 @@ btnLimparLista.addEventListener("click",function(){
   span.textContent = palavraSecreta.length;
 });
 btnPalavra.addEventListener("click", function(){
-  validarPalavra(); 
-  letrasDigitadas.push(entradaLetra.value);
-  entradaLetra.value = '';
+  if(validarEntradaTexto()){
+    validarPalavra(); 
+    letrasDigitadas.push(entradaLetra.value);
+    entradaLetra.value = '';
+  }
+  else{
+    erroEmpty.textContent = 'Esse campo não pode ser vazio!';
+    setTimeout(function(){
+      erroEmpty.textContent = '';
+    },3000);
+    return;
+    
+  }
+ 
+ 
 });
 btnReiniciarPartida.addEventListener("click", function(){
   document.location.reload(true);
@@ -115,6 +128,15 @@ function jogarNovamente(){
     derrota.style.display = "block";    
   }
 }
+function validarEntradaTexto(){
+  if(entradaLetra.value.length >0 ){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 
 
 

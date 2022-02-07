@@ -75,5 +75,8 @@ input{
   justify-content: center;
   align-items: center;
 }
+#error-empty{
+  color: brown;
+}
 
 
