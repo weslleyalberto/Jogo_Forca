@@ -43,7 +43,8 @@ btnReiniciarPartida.addEventListener("click", function(){
   document.location.reload(true);
 });
 entradaLetra.addEventListener('input',function() {
-  entradaLetra.value =entradaLetra.value.toUpperCase();
+  let entradaTextMaiusculo =entradaLetra.value.toUpperCase();
+  entradaLetra.value = entradaTextMaiusculo.replace(/[^a-z ]/gi,'');
 });
 function adicionarPalavra(palavra){
   palavraSecreta.push(palavra.toUpperCase());
