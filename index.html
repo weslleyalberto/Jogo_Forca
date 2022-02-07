@@ -20,6 +20,7 @@
       <button class="btn" id="nova-palavra">ADICIONAR PALAVRA</button> 
       <button class="btn" id="btn-sortear">Sortear Palavra</button>
       <button class="btn" id="btn-limpar-lista">Limpar Lista</button>
+      
       Palavras adicionadas:
       <span ></span>
     
@@ -29,8 +30,19 @@
     </div>
     <div style="text-align:center;">
       <canvas id="forca" height="800px" width="1200px"></canvas>
+      <span id="vitoria">
+        <p>Parabéns Você Ganhou!</p>
+        <button id="btnPerdeu">Reiniciar Partida!</button>
+      </span>
+      <span id="derrota">
+        <p>Você perdeu!</p>
+        <button id="btnPerdeu">Reiniciar Partida!</button>
+      </span>
       <div class="container-space" id="container">
 
+      </div>
+      <div id="container-tracinhos">
+        
       </div>
     <script type="text/javascript" src="canvas.js"></script>
     <script type="text/javascript" src="forca.js"></script>

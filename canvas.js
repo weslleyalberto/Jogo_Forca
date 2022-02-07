@@ -72,15 +72,37 @@ function shape9() {
 
 
 
-const shapes = [
-    shapeStart,
-    shape1,
-    shape2,
-    shape3,
-    shape4,
-    shape5,
-    shape6,
-    shape7,
-    shape8,
-    shape9,
-]
+function shapes(){
+        if(erros === 1){
+            shapeStart();
+        }
+        else if(erros === 2){
+            shape1();
+        }
+        else if(erros === 3){
+            shape2();
+        }
+        else if(erros === 4){
+            shape3();
+        }
+        else if(erros === 5){
+            shape4();
+        }
+        else if(erros === 6){
+            shape5();
+        }
+        else if(erros === 7){
+            shape6();
+        }
+        else if(erros === 8){
+            shape7();
+        }
+        else if(erros === 9){
+            shape8();
+        }
+        else{
+            shape9();
+            jogarNovamente();
+        }
+} 
+    
