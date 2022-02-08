@@ -1,9 +1,6 @@
-
 var canvas = document.querySelector('canvas');
 const contexto = canvas.getContext("2d");
-
 contexto.lineWidth = 5;
-
 function shapeStart() {
     contexto.beginPath();
     contexto.moveTo(100, 400);
@@ -69,8 +66,6 @@ function shape9() {
     contexto.stroke();
     contexto.closePath();
 }
-
-
 
 function shapes(){
         if(erros === 1){
