@@ -13,21 +13,24 @@
      
       <button class="btn" id="btn-iniciar-jogo">INICIAR JOGO</button>
     </div> 
-    <div style="text-align:center">  
+    <div style="text-align:center;">  
    
       <div id="container-digitar-letras">
-      <input placeholder="Digite uma letra" type="text" class="text-input" style="margin-bottom: 30px;" 
+      <input placeholder="Digite uma letra" type="text" class="text-input" 
       id="letra-text" maxlength="1">
       <span id="erro-entrada">
         <p id="error-empty"></p>
       </span>
       <button class="btn" type="button" id="btnPalavra">OK</button>
     </div>
-    <div style="text-align:center;">
+    <div style="text-align:center;" class="container-inline" id="container-letras-digitadas">
       
-      <span id="letras-erros-digitadas"></span>
-      <canvas id="forca" height="800px" width="1200px"></canvas>
-      <span id="vitoria">
+      <span id="letras-erros-digitadas">
+       
+
+      </span>
+		<canvas id="forca" height="800px" width="400px"></canvas>
+		<div > <span id="vitoria">
         <p>Parabéns Você Ganhou!</p>
         <button id="btnPerdeu">Reiniciar Partida!</button>
       </span>
@@ -35,10 +38,13 @@
         <p>Você perdeu!</p>
         <button id="btnPerdeu">Reiniciar Partida!</button>
       </span>
+  </div>
+		<div class="container-inline">
       <div class="container-space" id="container">
       </div>
       <div id="container-tracinhos">       
       </div>
+			</div>
     <script type="text/javascript" src="js/canvas.js"></script>
     <script type="text/javascript" src="js/forca.js"></script>
   </body>

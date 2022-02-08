@@ -23,19 +23,32 @@ let containerTracinhos = document.getElementById('container-tracinhos');
 let erroEmpty = document.getElementById('error-empty');
 let containerDigitarLetras = document.getElementById('container-digitar-letras');
 let containerIniciarJogo = document.getElementById('container-iniciar-jogo');
+let spanLetrasDigitadas =  document.getElementById('letras-erros-digitadas');
+let containerLetrasDigitadas = document.getElementById('container-letras-digitadas');
 /*Organizar todos os addeventList , depois funções externas , nessa ordem */
 btnIniciarJogo.addEventListener("click", function(){ 
   ocutarElemento(containerIniciarJogo);
   escolhaPalavraSecreta();
    sortearPalavra();
    mostrarElemento(containerDigitarLetras);
-
 });
 
 btnOk.addEventListener("click", function(){
-   if(validarEntradaTexto()){
-    validarPalavra(); 
+  
+  console.log(letrasDigitadas.length);
+  if(letrasDigitadas.includes(entradaLetra.value)){
+    erroEmpty.textContent = 'Esse letra já foi digitada!';
+    setTimeout(function(){
+      erroEmpty.textContent = '';
+    },3000);
+    return;    
+      
+  }
+   else if(validarEntradaTexto()){
     letrasDigitadas.push(entradaLetra.value);
+    validarPalavra(); 
+    mostrarLetrasDigitadas();
+   
     entradaLetra.value = '';
   }
   else{
@@ -44,9 +57,10 @@ btnOk.addEventListener("click", function(){
       erroEmpty.textContent = '';
     },3000);
     return;    
-  }
+      }
 });
 btnReiniciarPartida.addEventListener("click", function(){
+  letrasDigitadas = [];
   document.location.reload(true);
 });
 entradaLetra.addEventListener('input',function() {
@@ -136,6 +150,23 @@ function ocutarElemento(seletor){
 }
 function mostrarElemento(seletor){
   seletor.style.display = 'block';
+}
+function mostrarLetrasDigitadas(){
+ 
+  letrasDigitadas.forEach(function(l){
+    console.log(l);
+    
+    let spanComLetras = document.createElement('span');
+    
+
+    /*spanComLetras.setAttribute('ID','container-letras-digitadas');   
+    letrasDig = document.createTextNode(l);
+    containerLetrasDigitadas.appendChild(spanComLetras);
+    spanComLetras.appendChild(letrasDig);*/
+  });
+    
+   
+  
 }
 
 

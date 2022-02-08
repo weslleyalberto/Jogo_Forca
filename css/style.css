@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Source+Serif+4&display=swap');
 body{
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(271deg, #184092, #808a9f, #9663dd, #6d0ef2);
+  background-size: 800% 800%;
+  -webkit-animation: AnimationName 43s ease infinite;
+  -moz-animation: AnimationName 43s ease infinite;
+  animation: AnimationName 43s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 51%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 51%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 51%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 51%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 51%}
 }
 .titulo {
   padding: 15px;
@@ -9,9 +29,13 @@ body{
   margin: auto;
 
 }
-span{
-  text-decoration: underline;
+input{
+  font-family: 'Source Serif 4', sans-serif;
+  font-size: 3em;
 }
+
+
+
 .btn {
   border: 0;
   color: white;
@@ -22,7 +46,11 @@ span{
   margin-bottom: 10px;
   border-radius: 0.5em;
 }
-
+.container-inline{
+	display: inline-block;
+	
+		
+}
 .text-input {
   border-radius: 0.5em;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -66,6 +94,7 @@ input{
   width: 50px;
   height: 50px;
   margin: 0 10px 0 10px;
+  display: flex;
 }
 #container-tracinhos{
   width: 900px;
@@ -76,7 +105,7 @@ input{
   align-items: center;
 }
 #error-empty{
-  color: brown;
+  color: white;
 }
 #letras-digitadas{
   display: none;
@@ -84,5 +113,14 @@ input{
 #container-digitar-letras{
   display: none;
   margin-top: 50px;
+}
+button{
+  border-radius: 17px;
+  background: linear-gradient(271deg, #e45614, #244ea3, #ddda44, #6d0ef2);
+  background-size: 800% 800%;
+  -webkit-animation: AnimationName 51s ease infinite;
+  -moz-animation: AnimationName 51s ease infinite;
+  animation: AnimationName 51s ease infinite;
+
 }
 
