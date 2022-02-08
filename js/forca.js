@@ -34,22 +34,21 @@ btnIniciarJogo.addEventListener("click", function(){
 });
 
 btnOk.addEventListener("click", function(){
-  
   console.log(letrasDigitadas.length);
   if(letrasDigitadas.includes(entradaLetra.value)){
     erroEmpty.textContent = 'Esse letra já foi digitada!';
     setTimeout(function(){
       erroEmpty.textContent = '';
     },3000);
-    return;    
-      
+    return;        
   }
    else if(validarEntradaTexto()){
     letrasDigitadas.push(entradaLetra.value);
     validarPalavra(); 
-    mostrarLetrasDigitadas();
-   
+    
     entradaLetra.value = '';
+
+    mostrarLetrasDigitadas();  
   }
   else{
     erroEmpty.textContent = 'Esse campo não pode ficar vazio!';
@@ -154,22 +153,20 @@ function mostrarElemento(seletor){
 function mostrarLetrasDigitadas(){
  
   letrasDigitadas.forEach(function(l){
-    console.log(l);
-    
-    let spanComLetras = document.createElement('span');
-    
-
-    /*spanComLetras.setAttribute('ID','container-letras-digitadas');   
-    letrasDig = document.createTextNode(l);
-    containerLetrasDigitadas.appendChild(spanComLetras);
-    spanComLetras.appendChild(letrasDig);*/
-  });
+   
+      let spanComLetras = document.createElement('span');      
+      spanComLetras.setAttribute('ID','container-letras-digitadas');   
+      let letrasDig = document.createTextNode(l);
+      containerLetrasDigitadas.appendChild(spanComLetras);
+      spanComLetras.appendChild(letrasDig); 
+      
+     
     
    
-  
+  });   
+
+
+
 }
-
-
-
 
 

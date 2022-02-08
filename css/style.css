@@ -8,6 +8,11 @@ body{
   -moz-animation: AnimationName 43s ease infinite;
   animation: AnimationName 43s ease infinite;
 }
+*{
+  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 51%}
   50%{background-position:100% 50%}
@@ -48,8 +53,25 @@ input{
 }
 .container-inline{
 	display: inline-block;
+  background-color: transparent;
+    height: 100px;
+    width: 50%;
+    margin: 8px;
 	
 		
+}
+.box{
+  
+    background-color: transparent;
+    height: 100px;
+    width: 50%;
+    margin: 8px;
+  
+}
+.content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 .text-input {
   border-radius: 0.5em;
@@ -103,6 +125,9 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+img{
+  border-radius: 17px;
 }
 #error-empty{
   color: white;
