@@ -102,6 +102,7 @@ function shapes(){
         }
         else{
             shape9();
+            ocutarElemento(containerDigitarLetras);
             jogarNovamente();
         }
 } 

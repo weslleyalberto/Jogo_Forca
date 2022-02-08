@@ -81,5 +81,8 @@ input{
 #letras-digitadas{
   display: none;
 }
-
+#container-digitar-letras{
+  display: none;
+  margin-top: 50px;
+}
 

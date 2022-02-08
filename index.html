@@ -8,18 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div style="text-align:center; margin: 50px 0px;">
-      <h1 class="titulo">Jogo da Forca</h1>
-      <button class="btn" id="iniciar-jogo">INICIAR JOGO</button>
+    <h1 class="titulo" style="text-align: center;">Jogo da Forca</h1>
+    <div style="text-align:center; margin: 50px 0px;" id="container-iniciar-jogo">
+     
+      <button class="btn" id="btn-iniciar-jogo">INICIAR JOGO</button>
     </div> 
-    <div style="text-align:center">
-      <input class="text-input" type="text" id="input-nova-palavra" 
-      placeholder="Escreva uma nova palavra">
-      <button class="btn" id="nova-palavra">ADICIONAR PALAVRA</button> 
-      <button class="btn" id="btn-sortear">Sortear Palavra</button>
-      <button class="btn" id="btn-limpar-lista">Limpar Lista</button>     
-      Palavras adicionadas:
-      <span ></span>   
+    <div style="text-align:center">  
+   
+      <div id="container-digitar-letras">
       <input placeholder="Digite uma letra" type="text" class="text-input" style="margin-bottom: 30px;" 
       id="letra-text" maxlength="1">
       <span id="erro-entrada">
@@ -28,10 +24,7 @@
       <button class="btn" type="button" id="btnPalavra">OK</button>
     </div>
     <div style="text-align:center;">
-      <span id="span-letras-digitadas">
-        <p>Letras digitadas:</p>
-        <p id="letras-digitadas">OK</p>
-      </span>
+      
       <span id="letras-erros-digitadas"></span>
       <canvas id="forca" height="800px" width="1200px"></canvas>
       <span id="vitoria">

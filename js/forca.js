@@ -5,17 +5,15 @@ mais apresentáveis.
 let erros =0;
 let acertos = 0;
 let acertou = null;
-let palavraSecreta = ["BABY"];
+let palavraSecreta = ["ALURA","INVESTIMENTO","CARRO","PERNAMBUCO","ESTUDOS","URSO","APRENDIZADO","TERCEIRIZADO","TERAPIA","ACONTECIMENTO","CARRO","VIAGEM","TELEGRAMA","GATO","CASUAL","VERDADE","TRABALHO","SERIEDADE"];
 let letrasDigitadas = [];
 let palavraEscolhida = [];
 let novaPalavra = document.querySelector("#input-nova-palavra");
 let letraEscolhida = document.querySelector("#palavra-text");
-let buttonAdicionarPalavra = document.querySelector("#nova-palavra");
 let btnOk = document.querySelector("#btnPalavra");
-let btnSortearPalavra = document.querySelector("#btn-sortear");
+let btnIniciarJogo = document.querySelector("#btn-iniciar-jogo");
 let span = document.querySelector('span');
 let listContainer = document.querySelector('p');
-let btnLimparLista = document.querySelector("#btn-limpar-lista");
 let seletorEspaco = document.getElementById("container");
 let entradaLetra = document.getElementById('letra-text');
 let vitoria = document.getElementById('vitoria');
@@ -23,26 +21,19 @@ let derrota = document.getElementById('derrota');
 let btnReiniciarPartida = document.getElementById('btnPerdeu');
 let containerTracinhos = document.getElementById('container-tracinhos');
 let erroEmpty = document.getElementById('error-empty');
+let containerDigitarLetras = document.getElementById('container-digitar-letras');
+let containerIniciarJogo = document.getElementById('container-iniciar-jogo');
 /*Organizar todos os addeventList , depois funções externas , nessa ordem */
-btnSortearPalavra.addEventListener("click", function(){ 
+btnIniciarJogo.addEventListener("click", function(){ 
+  ocutarElemento(containerIniciarJogo);
   escolhaPalavraSecreta();
    sortearPalavra();
+   mostrarElemento(containerDigitarLetras);
+
 });
-buttonAdicionarPalavra.addEventListener("click",function(){
-  adicionarPalavra(novaPalavra.value);
-});
-btnLimparLista.addEventListener("click",function(){
-  palavraSecreta = [];
-  span.textContent = palavraSecreta.length;
-});
+
 btnOk.addEventListener("click", function(){
-  if(palavraEscolhida.length <=0){
-    erroEmpty.textContent = 'Você deve sortear uma palavra primeiro!';
-    setTimeout(function(){
-      erroEmpty.textContent = '';
-    },3000);
-  }
-  else if(validarEntradaTexto()){
+   if(validarEntradaTexto()){
     validarPalavra(); 
     letrasDigitadas.push(entradaLetra.value);
     entradaLetra.value = '';
@@ -123,12 +114,13 @@ for(let i=0;i < palavraEscolhida.length;i++){ // cria um laço for , de acordo c
 }
 function validarVitoria(){ // valida se usuario ganhou a partida
   if(acertos === palavraEscolhida.length){ // verifica se a quantidade de acertos é igual a quantidade de letras na palavraEscolhida(ou secreta);
-    vitoria.style.display = "block";  //se positivo, ao seletor vitoria, que corresponde a  ao span que mostra que o usuario ganhou;
+    mostrarElemento(vitoria);  //se positivo, ao seletor vitoria, que corresponde a  ao span que mostra que o usuario ganhou;
+    ocutarElemento(containerDigitarLetras);
   } 
 }
 function jogarNovamente(){ // reinicia , ou da um reload na pagína para que o usuario possa jogar novamente
   if(erros >= 10){ // verifica se o usuario perdeu o jogo, 
-    derrota.style.display = "block";    //se possitivo, apresenta a mensagem de jogador perdeu através da mudança do atributo css display:block do span;
+    mostrarElemento(derrota);    //se possitivo, apresenta a mensagem de jogador perdeu através da mudança do atributo css display:block do span;
   }
 }
 function validarEntradaTexto(){ // valida entrada de texto do usuario
@@ -139,6 +131,13 @@ function validarEntradaTexto(){ // valida entrada de texto do usuario
     return false; //retorna falso
   }
 }
+function ocutarElemento(seletor){
+  seletor.style.display = 'none';
+}
+function mostrarElemento(seletor){
+  seletor.style.display = 'block';
+}
+
 
 
 
